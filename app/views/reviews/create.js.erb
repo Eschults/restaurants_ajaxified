@@ -1,0 +1,20 @@
+function refreshForm(formHTML) {
+  const form = document.getElementById('new_review');
+  form.outerHTML = formHTML;
+}
+
+function appendReview() {
+  // sélectionner la div de reviews
+  const reviews = document.getElementById('reviews');
+  // insérer le contenu de ma nouvelle review
+  reviews.insertAdjacentHTML('beforeend', '<%= j render "reviews/review", review: @review %>');
+}
+
+// si j'ai des erreurs
+<% if @review.errors.any? %>
+  refreshForm('<%= j render "reviews/form", restaurant: @restaurant, review: @review %>');
+// sinon
+<% else %>
+  appendReview();
+  refreshForm('<%= j render "reviews/form", restaurant: @restaurant, review: Review.new %>');
+<% end %>

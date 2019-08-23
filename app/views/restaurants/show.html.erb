@@ -6,14 +6,11 @@
 
       <div id="reviews">
         <% @restaurant.reviews.each do |review| %>
-          <p><%= review.content %></p>
+          <%= render "reviews/review", review: review %>
         <% end %>
       </div>
 
-      <%= simple_form_for [ @restaurant, @review ] do |f| %>
-        <%= f.input :content, label: false, placeholder: "Write your review for #{@restaurant.name}" %>
-        <%= f.submit class: "btn btn-primary" %>
-      <% end %>
+      <%= render "reviews/form", restaurant: @restaurant, review: @review %>
     </div>
   </div>
 </div>

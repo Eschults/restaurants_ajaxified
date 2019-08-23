@@ -11,3 +11,8 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+.was-validated .form-control:invalid:focus, .form-control.is-invalid:focus {
+  border-color: #f7f7f7;
+  box-shadow: 0 0 0 0.1rem rgba(253, 16, 2, 1);
+}
